@@ -7,8 +7,8 @@ import {
 import { CircleUserRound } from "lucide-react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
-import { Separator } from "@radix-ui/react-dropdown-menu";
 import { Button } from "./ui/button";
+import { Separator } from "./ui/separator";
 
 const UsernameMenu = () => {
   const { user, logout } = useAuth0();
@@ -25,7 +25,12 @@ const UsernameMenu = () => {
             User Profile
           </Link>
         </DropdownMenuItem>
-        <Separator />
+        <DropdownMenuItem>
+          <Link to="/manage-restaurant" className="font-bold hover:text-orange-500 text-nowrap">
+            Manage Restaurant
+          </Link>
+        </DropdownMenuItem>
+        <Separator className="w-[90%] mx-auto my-1" />
         <DropdownMenuItem>
           <Button
             onClick={() => logout()}

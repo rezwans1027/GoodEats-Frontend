@@ -1,9 +1,11 @@
 import { useGetMyUser, useUpdateMyUser } from "@/api/MyUserApi";
+import ManageRestaurantForm from "@/forms/manage-restaurant-form/ManageRestaurantForm";
 import UserProfileForm from "@/forms/user-profile-form/UserProfileForm";
 
 const UserProfilePage = () => {
   const { updateUser, isLoading: isUpdateLoading } = useUpdateMyUser();
   const { currentUser, isLoading: isGetLoading } = useGetMyUser();
+
 
   if (isGetLoading) {
     return <div>Loading...</div>;
@@ -15,7 +17,11 @@ const UserProfilePage = () => {
 
   return (
     <div>
-      <UserProfileForm onSave={updateUser} isLoading={isUpdateLoading} currentUser={currentUser} />
+      <UserProfileForm
+        onSave={updateUser}
+        isLoading={isUpdateLoading}
+        currentUser={currentUser}
+      />
     </div>
   );
 };

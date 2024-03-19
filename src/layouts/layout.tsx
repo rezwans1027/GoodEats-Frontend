@@ -5,7 +5,6 @@ import { Outlet, useLocation } from "react-router";
 
 const Layout = () => {
   const location = useLocation();
-  console.log(location.pathname);
 
   return (
     <div className="flex flex-col min-h-[100vh] justify-between gap-16">

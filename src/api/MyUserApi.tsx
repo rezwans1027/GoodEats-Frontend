@@ -1,3 +1,4 @@
+import { useThrottle } from "@/hooks";
 import { User } from "@/types";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useMutation, useQuery, useQueryClient } from "react-query";
@@ -23,14 +24,15 @@ export const useGetMyUser = () => {
     if (!response.ok) {
       throw new Error("Failed to get user");
     }
-
     return response.json();
   };
 
-  const { data: currentUser, isLoading, isError, error } = useQuery(
-    "fetchCurrentUser",
-    getMyUserRequest
-  );
+  const {
+    data: currentUser,
+    isLoading,
+    isError,
+    error,
+  } = useQuery("fetchCurrentUser", getMyUserRequest, { staleTime: 1000 * 60 * 5 });
 
   if (isError) {
     // @ts-expect-error error is unknown
@@ -74,6 +76,7 @@ interface UpdateUserRequest {
 }
 
 export const useUpdateMyUser = () => {
+  const throttleToast = useThrottle(() => toast.success("User updated successfully"), 3000);
   const { getAccessTokenSilently } = useAuth0();
   const queryClient = useQueryClient();
   const updateMyUserRequest = async (formdata: UpdateUserRequest) => {
@@ -104,11 +107,10 @@ export const useUpdateMyUser = () => {
     onSuccess: () => {
       queryClient.invalidateQueries("fetchCurrentUser");
     },
-  
   });
 
   if (isSuccess) {
-    toast.success("User updated successfully");
+    throttleToast();
   }
 
   if (isError) {
@@ -119,5 +121,3 @@ export const useUpdateMyUser = () => {
 
   return { updateUser, isLoading, isError, isSuccess, error, reset };
 };
-
-
