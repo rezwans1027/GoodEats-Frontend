@@ -32,7 +32,7 @@ const DetailsSection = () => {
           </FormItem>
         )}
       />
-      <div className="flex gap-4">
+      <div className="flex gap-4 max-[380px]:flex-col">
         <FormField
           control={control}
           name="city"
@@ -64,7 +64,7 @@ const DetailsSection = () => {
         control={control}
         name="deliveryPrice"
         render={({ field }) => (
-          <FormItem className="max-w-[21%]">
+          <FormItem className="md:w-[21%] w-36">
             <FormLabel>Delivery Price ($)</FormLabel>
             <FormControl>
               <Input {...field} className="bg-white" placeholder="1.50" />
@@ -77,7 +77,7 @@ const DetailsSection = () => {
         control={control}
         name="estimatedDeliveryTime"
         render={({ field }) => (
-          <FormItem className="max-w-[21%]">
+          <FormItem className="md:w-[21%] w-36">
             <FormLabel>Estimated Delivery Time (minutes)</FormLabel>
             <FormControl>
               <Input {...field} className="bg-white" placeholder="30" />

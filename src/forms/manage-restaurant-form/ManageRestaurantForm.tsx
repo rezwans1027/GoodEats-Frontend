@@ -120,7 +120,7 @@ function ManageRestaurantForm({ onSave, isLoading, restaurant }: props) {
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="space-y-8 bg-gray-50 p-10 rounded-lg"
+          className="space-y-8 bg-gray-50 rounded-lg sm:p-8"
         >
           <DetailsSection />
           <Separator />
@@ -143,5 +143,3 @@ function ManageRestaurantForm({ onSave, isLoading, restaurant }: props) {
 }
 
 export default ManageRestaurantForm;
-
-// http://res.cloudinary.com/dacoxkkim/image/upload/v1710810163/lucrmxlmp5rvglenlh0x.jpg

@@ -7,9 +7,9 @@ const Header = () => {
 
   return (
     <div className="border-b-2 border-b-orange-500 py-6">
-      <div className="mx-auto container flex justify-between items-center">
+      <div className="mx-auto container max-sm:px-4 flex justify-between items-center">
         <Link
-          className="text-3xl font-bold tracking-tight text-orange-500"
+          className="sm:text-3xl text-2xl font-bold tracking-tight text-orange-500"
           to="/"
         >
           GoodEats.com
@@ -20,7 +20,7 @@ const Header = () => {
           ) : (
             <button
               onClick={async () => await loginWithRedirect()}
-              className="text-xl font-bold hover:text-orange-500 active:text-orange-700"
+              className="text-xl max-sm:text-lg font-bold hover:text-orange-500 active:text-orange-700"
             >
               Log In
             </button>
