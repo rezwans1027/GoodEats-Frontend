@@ -1,5 +1,4 @@
 import { useGetMyUser, useUpdateMyUser } from "@/api/MyUserApi";
-import ManageRestaurantForm from "@/forms/manage-restaurant-form/ManageRestaurantForm";
 import UserProfileForm from "@/forms/user-profile-form/UserProfileForm";
 
 const UserProfilePage = () => {
