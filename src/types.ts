@@ -26,3 +26,12 @@ export interface Restaurant {
     menuItems: MenuItem[];
     lastUpdated: string;
 }
+
+export interface RestaurantSearchResponse {
+    data: Restaurant[];
+    pagination: {
+        total: number;
+        page: number;
+        pages: number;
+    };
+}
