@@ -24,18 +24,22 @@ const formSchema = z.object({
   country: z.string().min(1, "Country is required"),
 });
 
-type UserFormData = z.infer<typeof formSchema>;
+export type UserFormData = z.infer<typeof formSchema>;
 
 interface UserProfileFormProps {
   onSave: (userProfileData: UserFormData) => void;
   isLoading: boolean;
   currentUser: User;
+  title?: string;
+  buttonText?: string
 }
 
 const UserProfileForm = ({
   isLoading,
   onSave,
   currentUser,
+  title = "User Profile",
+  buttonText = "Submit"
 }: UserProfileFormProps) => {
   const form = useForm<UserFormData>({
     mode: "onBlur",
@@ -54,7 +58,7 @@ const UserProfileForm = ({
         className="space-y-4 bg-gray-50 rounded-lg md:p-10"
       >
         <div>
-          <h2 className="text-2xl font-bold">User Profile Form</h2>
+          <h2 className="text-2xl font-bold">{title}</h2>
           <FormDescription>
             View and change your profile information here
           </FormDescription>
@@ -131,7 +135,7 @@ const UserProfileForm = ({
           <LoadingButton />
         ) : (
           <Button className="bg-orange-500" type="submit">
-            Save
+            {buttonText}
           </Button>
         )}
       </form>
