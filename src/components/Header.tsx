@@ -16,7 +16,15 @@ const Header = () => {
         </Link>
         <span className="flex space-x-2 items-center">
           {isAuthenticated ? (
-            <UsernameMenu />
+            <>
+              <Link
+                to="/order-status"
+                className="text-lg font-bold hover:text-orange-500 active:text-orange-700"
+              >
+                Orders
+              </Link>
+              <UsernameMenu />
+            </>
           ) : (
             <button
               onClick={async () => await loginWithRedirect()}

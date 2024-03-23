@@ -116,7 +116,7 @@ function ManageRestaurantForm({ onSave, isLoading, restaurant }: props) {
   };
 
   return (
-    <div>
+    <div className="mt-8">
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
